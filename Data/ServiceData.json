@@ -1,0 +1,57 @@
+[
+    
+    {
+        "_id": "635a0c0b64a6d231228942ae",
+        "service_id": "01",
+        "title": "Sports Photography",
+        "img": "https://i.ibb.co/jRcymtQ/service6.jpg",
+        "price": "2000.00",
+        "description": "Photo Day Options We offer several options to our Sports Team & Individual Leagues:Traditional Team and Individual Photography: Teams & individuals are photographed against natural backgrounds at the chosen location and all teams are arranged and photographed as a group.Composite Team & Individual Photography: This is where all the individual team members are photographed twice, one pose is used for the team photo and one pose is used for their individual photo. All the images are extracted from their original background and placed on a more dynamic and fully customizable digital background. Rather than a group team shot, a composite is made to combine everyone into the final team image.Hybrid of the two systems: In some cases we can combine certain aspects of both of these systems.There are some major differences between the two systems. Besides the obvious differences in style and presentation, using the composite system eliminates the necessity to photograph outdoors in natural surroundings, so it can remove the weather as a factor. However, because of the additional effort involved in creating the extractions, artwork & processing orders, it winds up being slightly more expensive to the parents, there is also a few additional days necessary in order to process orders."
+       
+    },
+    {
+        "_id": "635a0c0b64a6d231228942af",
+        "service_id": "02",
+        "title": "Press Photo",
+        "img": "https://i.ibb.co/rdnbMv4/service5.jpg",
+        "price": "800.00",
+        "description": "An imaginative photo is the perfect accessory to your press release and can increase chances of coverage. After the shoot, you will be sent a shortlist of three edited images to choose from. This service includes:Regional travel One hour photo shootEditing"
+    },
+    {
+        "_id": "635b591a1dafe382a9da8c96",
+        "service_id": "03",
+        "title": "Shoott's roster of events",
+        "img": "https://i.ibb.co/0ZKZMLM/service4.jpg",
+        "price": "100.00",
+        "description": "Enjoy your customized photo sessionWhether you’re looking for family photos, maternity portraits, engagement pics, birthdays snaps or content creation, you can relax at the hands of our talented pros."
+       
+    },
+    {
+        "_id": "635b5afc1dafe382a9da8c98",
+        "service_id": "04",
+        "title": "Photo Shooting",
+        "img": "https://i.ibb.co/vj9xNrD/service3.jpg",
+        "price": "500.00",
+        "description": "Our in-house photography services team made up of professional photographers can add value to your website with high-resolution team photos, corporate event photography and product photography.Professional photography services for your website and digital marketing use.Introduce the world to your business with authentic, high-resolution photos of your team, locations, products, customers and events."
+       
+    },
+    {
+        "_id": "635b5b691dafe382a9da8c99",
+        "service_id": "05",
+        "title": "Birthday photo shoot",
+        "img": "https://i.ibb.co/zmq7gQZ/service2.jpg",
+        "price": "400.00",
+        "description": "Birthdays are not so numerous to be neglected. Whether it's a decade anniversary for the new thirty-somethings, forty-somethings, fifty-somethings and all the others and as long as possible or wedding anniversaries which represent a moment of sharing to be privileged, the occasions are unique and to immortalize them in a successful way is not the prerogative of the first amateur photographer come."
+       
+    },
+    {
+        "_id": "635b5b691dafe382a9da8c99",
+        "service_id": "06",
+        "title": "Beautiful wedding photography",
+        "img": "https://i.ibb.co/Bfzx4mb/service1.jpg",
+        "price": "1200.00",
+        "description": "Tell us your needs, and we’ll put you in touch with the highest rated photographer near you. They’ll be available and experienced in your shoot type. You can also book multiple shoot types.Your Perfocal photographer will be there at the arranged time with everything they need. Enjoy your shoot knowing you’re in the hands of a professional.Perfocal's editors will enhance your photos before delivering them to your online gallery, all within 48 hours. View, download or share any way you like!"
+       
+    }
+   
+]
