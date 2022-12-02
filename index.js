@@ -17,11 +17,6 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
   serverApi: ServerApiVersion.v1,
 });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
 
 async function connection() {
   try {
@@ -29,22 +24,6 @@ async function connection() {
       .db("HelixDatabase")
       .collection("Services");
     const ReviewCollection = client.db("HelixDatabase").collection("Myreviews");
-
-    app.post("/", async (req, res) => {
-      const query = {};
-      const cursor = servicesCollection.find(query);
-      const cursorArray = await cursor.toArray();
-
-      const size = req.body.sizelimit;
-      let PartialService = cursorArray.slice(0, size);
-      if (size <= 3) {
-        return res.send(PartialService);
-      } else {
-        PartialService = cursorArray.slice(0, size);
-
-        return res.send(PartialService);
-      }
-    });
 
     app.get("/details/:id", async (req, res) => {
       const dataId = req.params.id;
@@ -83,7 +62,6 @@ async function connection() {
       res.send(cursorArray);
     });
 
-    // app.post("/detailsId", async (req, res) => {
     //   const data = req.body.data;
     //   console.log(data);
     //   const query = { _id: ObjectId(data) };
@@ -92,12 +70,27 @@ async function connection() {
 
     //   res.send(search);
     // });
-
-    app.listen(port, () => {
-      console.log(" helix server running on port ", port);
-    });
   } finally {
   }
 }
 
 connection().catch((er) => console.error(er));
+
+app.post("/", async (req, res) => {
+  const query = {};
+  const cursor = servicesCollection.find(query);
+  const cursorArray = await cursor.toArray();
+
+  const size = req.body.sizelimit;
+  let PartialService = cursorArray.slice(0, size);
+  if (size <= 3) {
+    return res.send(PartialService);
+  } else {
+    PartialService = cursorArray.slice(0, size);
+
+    return res.send(PartialService);
+  }
+});
+app.listen(port, () => {
+  console.log(" helix server running on port ", port);
+});
