@@ -25,11 +25,27 @@ async function connection() {
       .collection("Services");
     const ReviewCollection = client.db("HelixDatabase").collection("Myreviews");
 
+    app.post("/", async (req, res) => {
+      const query = {};
+      const cursor = servicesCollection.find(query);
+      const cursorArray = await cursor.toArray();
+
+      const size = req.body.sizelimit;
+      let PartialService = cursorArray.slice(0, size);
+      if (size <= 3) {
+        return res.send(PartialService);
+      } else {
+        PartialService = cursorArray.slice(0, size);
+
+        return res.send(PartialService);
+      }
+    });
+
     app.get("/details/:id", async (req, res) => {
       const dataId = req.params.id;
       const query = { _id: ObjectId(dataId) };
       const data = await servicesCollection.findOne(query);
-      console.log(data);
+      // console.log(data);
 
       res.send({ data });
     });
@@ -54,43 +70,44 @@ async function connection() {
     app.post("/MyReview", async (req, res) => {
       const email = req.body.email;
       const emaili = { email };
-      console.log(emaili);
+      // console.log(emaili);
       const query = { email: emaili.email };
       const cursor = ReviewCollection.find(query);
       const cursorArray = await cursor.toArray();
-      console.log(cursorArray);
+      // console.log(cursorArray);
       res.send(cursorArray);
     });
 
-    //   const data = req.body.data;
-    //   console.log(data);
-    //   const query = { _id: ObjectId(data) };
+    app.get("/delete/:id", async (req, res) => {
+      const id = req.params.id;
+      console.log(id);
+      const query = { _id: ObjectId(id) };
+      const cursor = await ReviewCollection.deleteOne(query);
 
-    //   const search = await servicesCollection.findOne(query);
+      res.send(cursor);
+    });
 
-    //   res.send(search);
-    // });
+    app.put("/edit/:id", async (req, res) => {
+      const id = req.params.id;
+      const bd = req.body.change;
+      console.log(id);
+      console.log(bd);
+
+      const filter = { _id: ObjectId(id) };
+
+      const updateDoc = {
+        $set: { topic: bd.topic, areatext: bd.areatext },
+      };
+      const result = await ReviewCollection.updateOne(filter, updateDoc);
+      console.log(result);
+      res.send(result);
+    });
   } finally {
   }
 }
 
 connection().catch((er) => console.error(er));
 
-app.post("/", async (req, res) => {
-  const query = {};
-  const cursor = servicesCollection.find(query);
-  const cursorArray = await cursor.toArray();
-
-  const size = req.body.sizelimit;
-  let PartialService = cursorArray.slice(0, size);
-  if (size <= 3) {
-    return res.send(PartialService);
-  } else {
-    PartialService = cursorArray.slice(0, size);
-
-    return res.send(PartialService);
-  }
-});
 app.listen(port, () => {
   console.log(" helix server running on port ", port);
 });
