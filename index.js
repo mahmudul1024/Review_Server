@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+
 const app = express();
 require("dotenv").config();
 const port = process.env.PORT || 5000;
@@ -7,7 +8,15 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 // Data
 
 // middleware
-app.use(cors());
+app.use(
+  cors({
+    allowedHeaders: ["sessionId", "Content-Type"],
+    exposedHeaders: ["sessionId"],
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+  })
+);
 app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.n9cwtsk.mongodb.net/?retryWrites=true&w=majority`;
@@ -85,6 +94,26 @@ async function connection() {
       const cursor = await ReviewCollection.deleteOne(query);
 
       res.send(cursor);
+    });
+
+    app.post("/addservice", async (req, res) => {
+      const bdy = req.body.addservice;
+      const { topicName, topicDesc, topicprice, topicpic } = bdy;
+      console.log(bdy);
+      const query = {};
+      const serviceCheck = servicesCollection.find(query);
+      const len = (await (await serviceCheck.toArray()).length) + 1;
+
+      const doc = {
+        title: topicName,
+        img: topicpic,
+        price: topicprice,
+        description: topicDesc,
+        service_id: len,
+      };
+      const result = await servicesCollection.insertOne(doc);
+
+      res.send(result);
     });
 
     app.put("/edit/:id", async (req, res) => {
